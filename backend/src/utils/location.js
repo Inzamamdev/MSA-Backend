@@ -5,8 +5,6 @@ const GEOCODE_URL = process.env.GEOCODING_BASE_URL;
 const API_KEY = process.env.GOOGLE_API_KEY;
 
 export const geocodeLocation = async (locationText) => {
-  console.log("locationYet", locationText);
-  console.log("GEOCODE_URL", GEOCODE_URL);
   try {
     const response = await axios.get(GEOCODE_URL, {
       params: {

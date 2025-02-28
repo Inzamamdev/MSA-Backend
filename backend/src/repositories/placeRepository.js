@@ -22,7 +22,6 @@ const fetchPlaces = async (query, locationText) => {
       address: place.vicinity,
       rating: place.rating || 0,
       phone: place.formatted_phone_number || "N/A",
-      placeId: place.place_id,
     }));
   } catch (error) {
     console.error("Error fetching places:", error);
