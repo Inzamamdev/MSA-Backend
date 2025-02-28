@@ -4,10 +4,11 @@ import {
   searchJuice,
   searchCombo,
 } from "../controllers/searchController.js";
+import rateLimiter from "../middleware/rateLimit.js";
 const router = express.Router();
 
-router.get("/pizza", searchPizza);
-router.get("/juice", searchJuice);
-router.get("/combo", searchCombo);
+router.get("/pizza", rateLimiter, searchPizza);
+router.get("/juice", rateLimiter, searchJuice);
+router.get("/combo", rateLimiter, searchCombo);
 
 export default router;

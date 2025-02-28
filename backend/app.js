@@ -4,6 +4,7 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { typeDefs } from "./src/graphql/schema.js";
 import { resolvers } from "./src/graphql/resolver.js";
+import rateLimiter from "./src/middleware/rateLimit.js";
 import bodyParser from "body-parser";
 import searchRoutes from "./src/routes/searchRoutes.js";
 dotenv.config();
@@ -18,6 +19,7 @@ await server.start();
 
 app.use(
   "/graphql",
+  rateLimiter,
   expressMiddleware(server, {
     context: async ({ req }) => ({}),
   })
