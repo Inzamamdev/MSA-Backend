@@ -102,9 +102,13 @@ Your application will be running at http://localhost:5000.
 ## API Endpoints
 
 1. **REST API**
+
+```bash
    GET /search/pizza : Returns a list of pizza places.
    GET /search/juice : Returns a list of juice shops.
    GET /search/combo : Returns places that offer both pizza and juice.
+```
+
 2. **GraphQL Endpoint**
    Send GraphQL queries to http://localhost:5000/graphql.
    Example query:
