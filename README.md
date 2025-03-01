@@ -13,9 +13,6 @@ This project is a microservice-based backend that provides data for nearby pizza
 - [Running Tests](#running-tests)
 - [Docker Support](#docker-support)
 - [API Endpoints](#api-endpoints)
-- [Frontend Integration](#frontend-integration)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
