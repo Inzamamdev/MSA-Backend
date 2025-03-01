@@ -60,10 +60,12 @@ npm install
 
 3. **Configure Environment Variables:**
 
+```bash
 PORT=5000
 GOOGLE_API_KEY=your_google_api_key
 PLACES_BASE_URL=https://maps.googleapis.com/maps/api/place/nearbysearch/json
 GEOCODING_BASE_URL = https://maps.googleapis.com/maps/api/geocode/json
+```
 
 ## Running the Application Locally
 
