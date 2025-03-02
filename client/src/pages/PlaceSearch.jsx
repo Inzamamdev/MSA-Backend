@@ -1,9 +1,10 @@
-// src/components/PlaceSearch.jsx
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import APISelect from "../components/APISelect";
+import RequestSelect from "../components/RequestSelect";
+import PlaceList from "../components/PlaceList";
 
-// Create Apollo Client for GraphQL requests
 const client = new ApolloClient({
   uri: `${import.meta.env.VITE_API_URL}/graphql`,
   cache: new InMemoryCache(),
@@ -111,30 +112,11 @@ export default function PlaceSearch() {
     <div className="max-w-xl mx-auto p-5">
       <h1 className="text-2xl font-bold text-center mb-4">Find Places</h1>
 
-      <div className="mb-3">
-        <label className="block mb-1">Select API Method:</label>
-        <select
-          value={apiMethod}
-          onChange={(e) => setApiMethod(e.target.value)}
-          className="w-full p-2 border rounded"
-        >
-          <option value="REST">REST</option>
-          <option value="GraphQL">GraphQL</option>
-        </select>
-      </div>
-
-      <div className="mb-3">
-        <label className="block mb-1">Select Request Type:</label>
-        <select
-          value={requestType}
-          onChange={(e) => setRequestType(e.target.value)}
-          className="w-full p-2 border rounded"
-        >
-          <option value="pizza">Pizza</option>
-          <option value="juice">Juice</option>
-          <option value="combo">Combo (Pizza and Juice)</option>
-        </select>
-      </div>
+      <APISelect apiMethod={apiMethod} setApiMethod={setApiMethod} />
+      <RequestSelect
+        requestType={requestType}
+        setRequestType={setRequestType}
+      />
 
       {apiMethod === "GraphQL" && (
         <div className="mb-3">
@@ -183,20 +165,7 @@ export default function PlaceSearch() {
 
       {error && <p className="text-red-500 mb-3">{error}</p>}
 
-      <div>
-        {results.length > 0 ? (
-          results.map((place, index) => (
-            <div key={index} className="border p-3 mb-2 rounded">
-              <h2 className="text-lg font-bold">{place.name}</h2>
-              <p>{place.address}</p>
-              <p>{place.rating}</p>
-              <p>{place.phone}</p>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-500">No results found</p>
-        )}
-      </div>
+      <PlaceList results={results} />
     </div>
   );
 }
